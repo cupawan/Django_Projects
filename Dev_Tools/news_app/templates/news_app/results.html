@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h3, h4 {
+            margin: 0;
+            align-items: center;
+        }
+
+        #newsResults {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h3>Results</h3>
+    {% if selected_category %}
+    <h4>Selected Category: {{ selected_category }}</h4>
+{% else %}
+    <h4>No category selected</h4>
+{% endif %}
+    <div class="container">
+        <div id="newsResults">
+            <!-- Use the safe filter to prevent HTML escaping -->
+            {{ data|safe }}
+        </div>
+    </div>
+</body>
+</html>
