@@ -1,0 +1,78 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: left;
+            justify-content: left;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 1800px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        form {
+            padding: 20px;
+            display: inline-block;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #newsResults {
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        select, input {
+            padding: 8px;
+            margin: 0 10px 20px 0;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Posts</title>
+</head>
+<body>
+    <h1>Search Reddit Posts</h1>
+    <form method="post" action="{% url 'get_posts_view' %}">
+        {% csrf_token %}
+        <label for="subreddit">Subreddit:</label>
+        <input type="text" name="subreddit" required>
+        <br>
+        <label for="filter">Filter:</label>
+        <input type="text" name="filter">
+        <br>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
