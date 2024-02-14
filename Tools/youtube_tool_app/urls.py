@@ -1,8 +1,8 @@
-
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('bhaskar/', views.dainik_bhaskar, name='dainik_bhaskar'),
+    path('playlist_length/', views.calculate_length_view, name='calculate_length_view'),
     # ... other URL patterns ...
 ]
+

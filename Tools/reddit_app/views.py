@@ -1,16 +1,21 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from prawcore.exceptions import NotFound
 from .script import RedditData
 
 def get_posts_view(request):
     if request.method == "GET":
         return render(request, 'reddit_index.html')
-    
-    elif request.method == "POST":    
+
+    elif request.method == "POST":
         subreddit = request.POST.get('subreddit')
-        filter = request.POST.get('filter')
-        config_path = 'DjangoProjects/Tools/django_dev_project/config.yaml'
-        reddit_data = RedditData(config_path=config_path)
-        body = reddit_data.make_request(sub=subreddit, filter=filter)
-        body_html = reddit_data.generate_html(body=body)
+        limit_posts = request.POST.get('limit')
+        filterby = request.POST.get('filterby')
+        reddit_data = RedditData(config_file_path = "/home/cupawan/Django_Projects/Tools/config.yaml")
+        try:
+            body = reddit_data.make_request(sub=subreddit,limit_posts = limit_posts, filterby = filterby)
+        except NotFound:
+            error_message = "Please correct your input (remove spaces from subreddit name if any). This subreddit might not exist."
+            return render(request, 'error_page.html', {'error_message': error_message})
         return render(request, 'reddit_results.html', {'posts': body})
+

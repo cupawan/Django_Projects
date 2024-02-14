@@ -4,11 +4,21 @@ import pandas as pd
 import os
 
 class Translator():
-    def __init__(self,api_key):
-        self.api_key = api_key
+    def __init__(self,config_file_path):
+        self.config_file_path = config_file_path
         self.base_url = "https://translation.googleapis.com/language/translate/v2"
         current_directory = os.path.dirname(os.path.realpath(__file__))
         self.csv_path = os.path.join(current_directory, 'language_codes.csv')
+        self.api_key = self.load_config()['GOOGLE_API_KEY']
+    def load_config(self):
+        try:
+            with open(self.config_file_path, 'r') as conf:
+                config = yaml.safe_load(conf)
+                return config
+        except Exception as e:
+            d = {}
+            return d
+
     def detect_language(self, query):
         url = f"{self.base_url}/detect"
         payload = {

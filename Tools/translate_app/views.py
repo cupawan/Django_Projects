@@ -7,10 +7,9 @@ def translate_text(request):
     if request.method == "POST":
         form = TranslateForm(request.POST)
         if form.is_valid():
-            api = form.cleaned_data['api_key']
             text = form.cleaned_data['text']
             target = form.cleaned_data['target_language']
-            obj = Translator(api_key=api)
+            obj = Translator(config_file_path = "/home/cupawan/Django_Projects/Tools/config.yaml")
             target = obj.language_to_code(target)
             detected_language = obj.detect_language(text)
             
@@ -22,7 +21,8 @@ def translate_text(request):
             data = {
                 'detectedLanguage': detected_language,
                 'translatedText': translation,
-                'source': source
+                'source': source,
+                'target' : obj.code_to_language(target)
             }
 
 

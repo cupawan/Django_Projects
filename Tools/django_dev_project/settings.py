@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["cupawan.pythonanywhere.com"]
 
 
 # Application definition
@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "news_app",
     "translate_app",
-    "reddit_app"
+    "reddit_app",
+    "youtube_tool_app"
 ]
 
 MIDDLEWARE = [

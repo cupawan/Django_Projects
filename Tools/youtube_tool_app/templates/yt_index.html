@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reddit Posts Search</title>
+    <title>Calculate Youtube Playlist Length</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,7 +15,7 @@
         h1 {
             color: #3498db;
         }
-        #reddit-avatar {
+        #yt-logo {
             width: 75px; 
             height: 85px;
             margin-bottom: 20px;
@@ -64,27 +64,14 @@
     </style>
 </head>
 <body>
-    <img id="reddit-avatar" src="https://www.redditstatic.com/desktop2x/img/id-cards/snoo-home@2x.png" alt="Reddit Avatar">
-
-    <h1>Search Reddit Posts</h1>
-    <form method="post" action="{% url 'get_posts_view' %}">
+    <img id="yt-logo" src="https://echoneon.co.uk/wp-content/uploads/2022/07/youtube-neon-lights.jpg" alt="YT">
+    <h1>Get Youtube Playlist Length</h1>
+    <form method="post" action="{% url 'calculate_length_view' %}">
         {% csrf_token %}
-        <label for="subreddit">Subreddit</label>
-        <input type="text" name="subreddit" required>
-        
-        <label for="limit">Number of Posts</label>
-        <input type="text" name="limit" required>
-        
-        <label for="filter">Filter By</label>
-        <select name="filterby">
-            <option value="top">Top</option>
-            <option value="new">New</option>
-            <option value="hot">Hot</option>
-        </select>
-        
-        <input type="submit" value="Search">
+        <label for="playlist_link">Playlist Link</label>
+        <input type="text" name="playlist_link" required>        
+        <input type="submit" value="Calculate">
     </form>
-
     <div class="contact-info">
         <p>Email: <a href="mailto:pavan11896@gmail.com">pavan11896@gmail.com</a></p>
         <p>Github: <a href="https://www.github.com/cupawan" target="_blank">Pawan Kumar</a></p>
@@ -92,4 +79,3 @@
     </div>
 </body>
 </html>
-
