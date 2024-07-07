@@ -17,7 +17,7 @@ def daily_activity_view(request):
                 'reading_writing': form.cleaned_data['reading_writing'],
                 'comments': form.cleaned_data['comments'],
             }
-            gs = GoogleSheetsAutomation(config_file_path='/Users/cupawan/CodeBase/MyProjects/Django_Projects/Tools/Configs/config.yaml')
+            gs = GoogleSheetsAutomation()
             ws = gs.select_worksheet(sheet_name="CUPAWAN", worksheet_index=0)
             gs.insert_values(sheet = ws, append_row= list(data.values()))
             return render(request, 'success.html')

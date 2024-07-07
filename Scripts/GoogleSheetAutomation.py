@@ -4,9 +4,8 @@ from Scripts.Configuration import ConfigurationClass
 
 
 class GoogleSheetsAutomation:
-    def __init__(self, config_file_path):
-        self.config = ConfigurationClass(config_file_path).loadConfiguration()
-        print(f"SELF CONFIG = {self.config}")
+    def __init__(self):
+        self.config = ConfigurationClass().loadConfiguration()
 
     def set_up_gc(self):
         gc = gspread.service_account(filename= self.config['GOOGLE']['GOOGLE_CLIENT_SECRETS_PATH'])

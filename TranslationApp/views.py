@@ -9,7 +9,7 @@ def translate_text(request):
         if form.is_valid():
             text = form.cleaned_data['text']
             target = form.cleaned_data['target_language'].title()
-            obj = Translator(config_file_path = "/Users/cupawan/CodeBase/MyProjects/Django_Projects/Tools/Configs/config.yaml")
+            obj = Translator()
             target = obj.language_to_code(target)
             detected_language = obj.detect_language(text)
             

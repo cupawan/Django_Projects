@@ -5,8 +5,8 @@ import praw
 from Scripts.Configuration import ConfigurationClass
 
 class RedditData:
-    def __init__(self,config_file_path):
-        self.config = ConfigurationClass(config_path=config_file_path,key = "REDDIT").loadConfiguration()
+    def __init__(self):
+        self.config = ConfigurationClass(key = "REDDIT").loadConfiguration()
 
     def auth(self):
         config = self.config

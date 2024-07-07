@@ -1,7 +1,7 @@
 import yaml
 
 class ConfigurationClass:
-    def __init__(self, config_path, key = None):
+    def __init__(self, config_path= "/home/cupawan/Django_Projects/Configs/config.yaml", key = None):
         self.config_path = config_path
         self.key = key
         self.config = self.loadConfiguration()

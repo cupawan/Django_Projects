@@ -14,7 +14,7 @@ def get_posts_view(request):
         limit_posts = request.POST.get('limit')
         filterby = request.POST.get('filterby')
 
-        reddit_data = RedditData(config_file_path = "/Users/cupawan/CodeBase/MyProjects/Django_Projects/Tools/Configs/config.yaml")
+        reddit_data = RedditData()
         try:
             body = reddit_data.make_request(sub=subreddit,limit_posts = limit_posts, filterby = filterby)
         except NotFound:

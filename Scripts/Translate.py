@@ -5,10 +5,10 @@ import os
 from Scripts.Configuration import ConfigurationClass
 
 class Translator():
-    def __init__(self,config_file_path):
+    def __init__(self):
         self.base_url = "https://translation.googleapis.com/language/translate/v2"
-        self.csv_path = "/Users/cupawan/CodeBase/MyProjects/Django_Projects/Tools/TranslationApp/language_codes.csv"
-        self.api_key = ConfigurationClass(config_path=config_file_path, key = "GOOGLE").loadConfiguration()['GOOGLE_API_KEY']
+        self.csv_path = "/home/cupawan/Django_Projects/TranslationApp/language_codes.csv"
+        self.api_key = ConfigurationClass(key = "GOOGLE").loadConfiguration()['GOOGLE_API_KEY']
 
     def detect_language(self, query):
         url = f"{self.base_url}/detect"
